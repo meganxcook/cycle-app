@@ -1,0 +1,24 @@
+{% extends 'base/main.html' %} {% block content %}
+<p>Hi, {{ request.user }}</p>
+<p>Hi, {{ form.first_name }}</p>
+
+<h1>My Events</h1>
+<a href="{% url 'event-create' %}">Add Event</a>
+
+<table>
+    <tr>
+        <th>Item</th>
+        <th></th>
+    </tr>
+    {% for event in all_events %}
+    <tr>
+        <td>{{ event.title }}</td>
+        <td><a href="{% url 'event' event.id %}">View</a></td>
+        <td><a href="{% url 'event-update' event.id %}">Edit</a></td>
+        <td><a href="{% url 'event-delete' event.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    <h3>No events</h3>
+    {% endfor %}
+</table>
+{% endblock content %}

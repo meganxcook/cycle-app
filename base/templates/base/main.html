@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'media/icon-color.png' %}" size="50x50" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <!-- bottom nav bar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- ----------- -->
+    <title>Cycle. An inclusive menstrual cycle tracking app.</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}" class="logo__item">
+                <img src="{% static 'media/logo-color.png' %}" alt="">
+            </a>
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="{% url 'home' %}" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="{% url 'about' %}" class="nav__link">About</a></li>
+                {% if user.is_authenticated %}
+                <li class="nav__item"><a href="{% url 'logout' %}" class="nav__link">Log out</a></li>
+                {% else %}
+                <li class="nav__item"><a href="{% url 'login' %}" class="nav__link">Log in</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- main content -->
+    <div class="container">
+        {% block content %} {% endblock content %}
+    </div>
+
+    <!-- bottom navigation bar -->
+    <footer class="footer">
+        <nav class="nav-bottom" onclick="makeActive()">
+            <a href="{% url 'home' %}" class="nav-bottom__link">
+                <i class="material-icons nav-bottom__icon">home</i>
+                <span class="nav-bottom__text">Home</span>
+            </a>
+            <a href="{% url 'calendar' %}" class="nav-bottom__link">
+                <i class="material-icons nav-bottom__icon">calendar_today</i>
+                <span class="nav-bottom__text">Calendar</span>
+            </a>
+            <a href="{% url 'event-create' %}" class="nav-bottom__link">
+                <i class="material-icons nav-bottom__icon">add_circle</i>
+                <span class="nav-bottom__text">Log</span>
+            </a>
+            <a href="{% url 'snapshot' %}" class="nav-bottom__link">
+                <i class="material-icons nav-bottom__icon">timeline</i>
+                <span class="nav-bottom__text">Snapshot</span>
+            </a>
+            <a href="{% url 'profile' %}" class="nav-bottom__link">
+                <i class="material-icons nav-bottom__icon">perm_identity</i>
+                <span class="nav-bottom__text">Profile</span>
+            </a>
+        </nav>
+    </footer>
+
+    <script src="{% static 'app.js' %}"></script>
+    <!-- calendar/huiwen tutorial -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <!-- ---------- -->
+
+</body>
+
+</html>

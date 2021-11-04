@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %} {% block content %}
+
+<h1>Cycle Snapshot</h1>
+
+<p>The purpose of this page is to collect points of data from logged events then display those data points on charts and graphs so the user can visualize patterns throughout their cycle.</p>
+<p>Data to be displayed:</p>
+<ul>
+    <li>BBT (number)</li>
+    <li>LH (number)</li>
+    <li>Flow (light, moderate, heavy)</li>
+    <li>Cramps (none, light, moderate, heavy)</li>
+    <li>Libido (low, moderate, high)</li>
+    <li>Mood (depressed, sad, numb, irritable, angry, sensitive, happy, excited, manic)</li>
+    <li>Energy level (exhausted, low, moderate, high, energized)</li>
+</ul>
+
+{% load static %}
+<img src="{% static 'media/bbt-chart.jpg' %}">
+<p>(Example image)</p>
+
+{% endblock content %}
