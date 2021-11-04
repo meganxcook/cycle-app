@@ -59,7 +59,7 @@ class ProfileCreate(LoginRequiredMixin, CreateView):
 # hui wen calendar tutorial
 class CalendarView(LoginRequiredMixin, generic.ListView):
     model = Event
-    template_name = 'calendar.html'
+    template_name = 'base/calendar.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -104,42 +104,38 @@ def event(request, event_id=None):
     return render(request, 'event-create.html', {'form': form})
 # ----------
 
-def view_events(request):
-    all_events = Event.objects.all()
-    return render(request, 'event-list.html', {'all_events': all_events})
+class EventList(LoginRequiredMixin, ListView):
+    model = Event
+    context_object_name = 'events'
 
-# class EventList(LoginRequiredMixin, ListView):
-#     model = Event
-#     context_object_name = 'events'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['events'] = context['events'].filter(user=self.request.user)
+        return context
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['events'] = context['events'].filter(user=self.request.user)
-#         return context
+class EventDetail(LoginRequiredMixin, DetailView):
+    model = Event
+    context_object_name = 'event'
+    template_name = 'base/event.html'
 
-# class EventDetail(LoginRequiredMixin, DetailView):
-#     model = Event
-#     context_object_name = 'event'
-#     template_name = 'base/event.html'
+class EventCreate(LoginRequiredMixin, CreateView):
+    model = Event
+    fields = ['title', 'period_started', 'period_ended', 'symptoms', 'mood', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'notes']
+    success_url = reverse_lazy('calendar')
 
-# class EventCreate(LoginRequiredMixin, CreateView):
-#     model = Event
-#     fields = ['title', 'period_started', 'period_ended', 'symptoms', 'mood', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'notes']
-#     success_url = reverse_lazy('calendar')
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(EventCreate, self).form_valid(form)
 
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super(EventCreate, self).form_valid(form)
+class EventUpdate(LoginRequiredMixin, UpdateView):
+    model = Event
+    fields = ['title', 'period_started', 'period_ended', 'symptoms', 'mood', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'notes']
+    success_url = reverse_lazy('calendar')
 
-# class EventUpdate(LoginRequiredMixin, UpdateView):
-#     model = Event
-#     fields = ['title', 'period_started', 'period_ended', 'symptoms', 'mood', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'notes']
-#     success_url = reverse_lazy('calendar')
-
-# class DeleteView(LoginRequiredMixin, DeleteView):
-#     model = Event
-#     context_object_name = 'event'
-#     success_url = reverse_lazy('calendar')
+class DeleteView(LoginRequiredMixin, DeleteView):
+    model = Event
+    context_object_name = 'event'
+    success_url = reverse_lazy('calendar')
 
 # @login
 def home(request):
