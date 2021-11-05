@@ -1,37 +1,47 @@
 {% extends 'base/main.html' %} {% block content %}
 
-<h1>Hi, {{ request.user }}</h1>
-
-<h2>Current goal:</h2>
-<ul>
-    <li>goal {{ Profile.goal }}</li>
-</ul>
-
-<h2>Cycle overview:</h2>
-<ul>
-    <li>Cycle averages <strong>{{ Profile.typical_cycle_length }}</strong>days.</li>
-    <li>Flow averages <strong>{{ Profile.typical_flow_length }}</strong>days.</li>
-</ul>
-
-<h2>Recurrent symptoms:</h2>
-<ul>
-    {% for symptom in typical_symptoms %}
-    <li>symptom 1 {{ profile.typical_symptoms }}</li>
-    {% empty %}
-    <li>No reported symptoms</li>
-    {% endfor %}
-</ul>
-
-<h2>Current method of contraception:</h2>
-<ul>
-    <li>bc method {{profile.current_bc_method}}</li>
-</ul>
-
-<div class="profile-footer">
+<div class="content-box">
+    <h1>Caitlin's{{ .first_name|title }} profile.</h1>
+    <br>
     <a href="{% url 'profile' %}"><button class="btn">Update Profile</button></a>
+</div>
 
+<div class="content-box">
+    <h2>Current goal</h2>
+    <ul>
+        <li>goal {{ Profile.goal }}</li>
+    </ul>
+</div>
+
+<div class="content-box">
+    <h2>Cycle Length</h2>
+    <ul>
+        <li>Cycle averages <strong>{{ Profile.typical_cycle_length }}days</strong>.</li>
+        <li>Flow averages <strong>{{ Profile.typical_flow_length }}days</strong>.</li>
+    </ul>
+
+</div>
+
+<div class="content-box">
+    <h2>Recurrent symptoms</h2>
+    <ul>
+        {% for symptom in typical_symptoms %}
+        <li>symptom 1 {{ profile.typical_symptoms }}</li>
+        {% empty %}
+        <li>No reported symptoms</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="content-box">
+    <h2>Current method of contraception</h2>
+    <ul>
+        <li>bc method {{profile.current_bc_method}}</li>
+    </ul>
+</div>
+
+<div class="content-box">
     <a href=""><button class="btn">Reset Password</button></a>
-
     <a href="{% url 'logout' %}"><button class="btn">Log out</button></a>
 </div>
 

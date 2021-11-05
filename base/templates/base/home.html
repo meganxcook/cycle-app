@@ -1,47 +1,45 @@
 {% extends 'base/main.html' %} {% block content %}
-<h1>Home</h1>
 
-<h1>Hi, {{ request.user }}</h1>
-<h1>Hi, {{ first_name|title }}.</h1>
+<!-- <div class="header-bar">
+    <h2>Home</h2>
+</div> -->
 
-<h2>Today is {{ get_date }}.</h2>
-
-<div class="moon-info">
-    <h1>🌙 {{ current_lunar_phase_emoji }}</h1>
-    <h2>Waxing Crescent {{ current_lunar_phase_text }}</h2>
+<div class="content-box">
+    <h1>👋 Hi, {{ request.user }}.</h1>
 </div>
 
-<div class="user-current-phase">
-    <p>You are in your {{ user_phase }}.</p>
-    <p>You are on {{ user_day }} of your cycle.</p>
+<div class="content-box">
+    <h2>{% now "jS F Y" %}</h2>
+    <br>
+    <div class="moon-info">
+        <h1>🌑 {{ current_lunar_phase_emoji }}</h1>
+        <h3>New Moon {{ current_lunar_phase_text }}</h3>
+    </div>
 </div>
 
-<div class="upcoming-dates">
-    <h2>Upcoming dates:</h2>
-    <table>
-        <tr>
-            <th>Next phase</th>
-            <th>Date</th>
-            <th>Days from now</th>
-        </tr>
-        <tr>
-            <td>next phase {{ user_phase }}</td>
-            <td>date {{ date_next_phase }}</td>
-            <td>days {{ days_to_next_phase }}</td>
-        </tr>
-    </table>
+<div class="content-box">
+    <p>You are in your <strong>{{ user_phase }} phase</strong>.</p>
+    <p>You are on <strong>day {{ user_day }}</strong> of your cycle.</p>
 </div>
 
-<div class="reminders">
-    <h2>Reminders:</h2>
+<div class="content-box">
+    <h2>Upcoming</h2>
+    <p>You are <strong>{{ days }} days</strong> from <strong>{{ user_phase }}ovulation</strong>.</p>
+    <p>Your <strong>{{ user_phase }}phase </strong> will begin around <strong>{{ date }}date</strong>, in <strong>{{ days }}days</strong>.</p>
+</div>
+
+<div class="content-box">
+    <h2>Reminders</h2>
     <ul>
         <li>Log BBT today</li>
         <li>Test LH in 5 days</li>
     </ul>
 </div>
 
-<div class="recommendations">
-    <h2>Recommendations for the {{ user_phase.phase }} follicular phase:</h2>
+<div class="content-box">
+    <h2>Recommendations</h2>
+    <br>
+    <h3>THE FOLLICULAR PHASE</h3>
     <p>Think of this phase as spring. Estrogen is rising. It's a good time to think about the big picture.</p>
     <ul>
         <li>Schedule social engagements for the upcoming week.</li>

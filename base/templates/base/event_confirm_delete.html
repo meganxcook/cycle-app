@@ -1,8 +1,12 @@
 {% extends 'base/main.html' %} {% block content %}
-<a href="{% url 'events' %}"><button class="btn">Back</button></a>
-<form method="POST" action="">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{ event }}"?</p>
-    <input type="submit" value="Yes, Delete" />
-</form>
+
+<div class="content-box">
+    <a href="{% url 'calendar' %}"><button class="btn">Back</button></a>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ event }}"?</p>
+        <input type="submit" value="Yes, Delete" />
+    </form>
+</div>
+
 {% endblock content %}

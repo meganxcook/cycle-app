@@ -11,6 +11,7 @@ from django.utils.safestring import mark_safe
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from datetime import datetime, timedelta, date
@@ -55,6 +56,23 @@ class ProfileCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(ProfileCreate, self).form_valid(form)
+
+def user_name(request):
+    user = str(request.user).title()
+    log_user = request.user
+    all = Profile.objects.all()
+    # user_name = []
+    # all = Profile.objects.all()
+    # for name in all:
+    #     if 'cait' in name:
+
+    # output = request.user
+    # for first in all:
+    #     output.append({
+    #         'name': first.first_name,
+    #         'user': first.user
+    #     })
+    return [all, log_user]
 
 # hui wen calendar tutorial
 class CalendarView(LoginRequiredMixin, generic.ListView):
@@ -120,7 +138,7 @@ class EventDetail(LoginRequiredMixin, DetailView):
 
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
-    fields = ['title', 'period_started', 'period_ended', 'symptoms', 'mood', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'notes']
+    fields = ['title', 'start_date', 'end_date', 'period_started', 'period_ended', 'symptoms', 'mood', 'energy', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'fluid', 'notes']
     success_url = reverse_lazy('calendar')
 
     def form_valid(self, form):
@@ -129,7 +147,7 @@ class EventCreate(LoginRequiredMixin, CreateView):
 
 class EventUpdate(LoginRequiredMixin, UpdateView):
     model = Event
-    fields = ['title', 'period_started', 'period_ended', 'symptoms', 'mood', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'notes']
+    fields = ['title', 'start_date', 'end_date', 'period_started', 'period_ended', 'symptoms', 'mood', 'energy', 'cramps', 'flow', 'libido', 'sperm', 'result', 'bbt', 'lh', 'fluid', 'notes']
     success_url = reverse_lazy('calendar')
 
 class DeleteView(LoginRequiredMixin, DeleteView):
@@ -137,15 +155,16 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = 'event'
     success_url = reverse_lazy('calendar')
 
-# @login
+@login_required()
 def home(request):
+    print(user_name(request))
     return render(request, 'base/home.html')
 
-# @login
+@login_required()
 def profile_view(request):
     return render(request, 'base/profile.html')
 
-# @login
+@login_required()
 def snapshot(request):
     return render(request, 'base/snapshot.html')
 

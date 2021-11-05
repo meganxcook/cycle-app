@@ -8,7 +8,7 @@ from datetime import date
 class Profile(models.Model):
     SYMPTOMS = (
         ('NONE', 'None'),
-        ('HEADACHE', 'Headache'),
+        ('HEADACHE', 'Headaches'),
         ('MIGRAINE', 'Migraine'),
         ('BLOATING', 'Bloating'),
         ('SPOTTING', 'Spotting'),
@@ -69,7 +69,7 @@ class Event(models.Model):
     SYMPTOMS = (
         ('NONE', 'None'),
         ('HEADACHE', 'Headaches'),
-        ('MIGRAINE', 'Migraines'),
+        ('MIGRAINE', 'Migraine'),
         ('BLOATING', 'Bloating'),
         ('SPOTTING', 'Spotting'),
         ('FATIGUE', 'Fatigue'),
@@ -81,7 +81,7 @@ class Event(models.Model):
 
     CRAMPS = (
         ('NONE', 'None'),
-        ('LIGHT', 'Light'),
+        ('SLIGHT', 'Slight'),
         ('MODERATE', 'Moderate'),
         ('SEVERE', 'Severe'),
     )
@@ -95,12 +95,20 @@ class Event(models.Model):
     )
 
     SPERM_OR_INSEMINATION = (
-        ('YES', 'Yes'),
+        ('UNPROTECTED', 'Unprotected'),
+        ('PROTECTED', 'Protected'),
+        ('INSEMINATION', 'Insemination'),
     )
 
     PREG_TEST_RESULT = (
         ('POSITIVE', 'Positive'),
         ('NEGATIVE', 'Negative'),
+    )
+
+    CERVICAL_FLUID = (
+        ('STICKY', 'Sticky, dry'),
+        ('CREAMY', 'Creamy'),
+        ('STRETCHY', 'Stretchy, clear, slippery'),
     )
 
     LIBIDO = (
@@ -123,21 +131,32 @@ class Event(models.Model):
         ('EXCITED', 'Excited'),
         ('ECSTATIC', 'Ecstatic'),
     )
+
+    ENERGY = (
+        ('EXHAUSTED', 'Exhausted'),
+        ('LOW', 'Low'),
+        ('MODERATE', 'Moderate'),
+        ('HIGH', 'High'),
+        ('ENERGIZED', 'Energized'),
+    )
+
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
-    # start_time = models.DateTimeField()
-    # end_time = models.DateTimeField()
+    start_date = models.DateField(default=date.today)
+    end_date = models.DateField(default=date.today)
     period_started = models.DateField(default=date.today, null=True, blank=True)
     period_ended = models.DateField(default=date.today, null=True, blank=True)
     symptoms = MultiSelectField(choices=SYMPTOMS, null=True, blank=True)
     mood = MultiSelectField(choices=MOOD, null=True, blank=True)
+    energy = MultiSelectField(choices=ENERGY, null=True, blank=True)
     cramps = models.CharField(max_length=100, choices=CRAMPS, null=True, blank=True)
     flow = models.CharField(max_length=100, choices=FLOW, null=True, blank=True)
     libido = models.CharField(max_length=100, choices=LIBIDO, null=True, blank=True)
     sperm = models.CharField(max_length=100, choices=SPERM_OR_INSEMINATION, null=True, blank=True)
     result = models.CharField(max_length=100, choices=PREG_TEST_RESULT, null=True, blank=True)
+    fluid = MultiSelectField(choices=CERVICAL_FLUID, null=True, blank=True)
     bbt = models.FloatField(null=True, blank=True)
     lh = models.FloatField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)

@@ -1,31 +1,43 @@
 {% extends 'base/main.html' %} {% block content %}
-<h1>About</h1>
+<div class="content-box">
+    <h2>Cycle.</h2>
+    <br>
+    <h3>An inclusive menstrual cycle tracking app.</h3>
+</div>
 
-<h2>Cycle.</h2>
-<h3>An inclusive menstrual cycle tracking app.</h3>
+<div class="content-box">
+    <h2>How to use this app</h2>
+    <ul>
+        <li>Enter as much information as possible about your cycle to receive judgement-free visual feedback, important reminders, and tailored recommendations.</li>
+        <li>Log your symptoms so you can start to track patterns and gain more awareness about your particular cycle. You can also track your BBT (basal body temperature), LH (luteinizing hormone), encounters with sperm, and pregnancy test results.</li>
+        <li>Know when you're likely to be ovulating and menstruating next so you can plan accordingly.</li>
+        <li>Check out the resources section below to learn more about hormones and the menstrual cycle.</li>
+        <li>Update or change your information at any time.</li>
+    </ul>
+</div>
 
-<h2>How to use this app</h2>
-<ul>
-    <li>Enter as much information as possible about your cycle to receive judgement-free visual feedback, important reminders, and tailored recommendations.</li>
-    <li>Log your symptoms so you can start to track patterns and gain more awareness about your particular cycle. You can also track your BBT (basal body temperature), LH (luteinizing hormone), encounters with sperm, and pregnancy test results.</li>
-    <li>Know when you're likely to be ovulating and menstruating next so you can plan accordingly.</li>
-    <li>Check out the resources section below to learn more about hormones and the menstrual cycle.</li>
-    <li>Update or change your information at any time.</li>
-</ul>
+<div class="content-box about-resources">
+    <h2>Resources</h2>
+    <ul>
+        <li>
+            <a href="https://helloclue.com/articles/cycle-a-z/testosterone-your-cycle" class="resource-link">Testosterone therapy and the menstrual cycle</a>
+        </li>
+        <li>
+            <a href="https://medium.com/hci-design-at-uw/five-things-to-think-about-when-designing-a-period-tracking-app-9a79ac7cf446" class="resource-link">Five things to think about when designing a period tracking app</a>
+        </li>
+        <li>
+            <a href="https://www.coyotemidwifery.com/goodsoil" class="resource-link">Coyote Midwifery's Good Soil Fertility Education for Every Body</a>
+        </li>
+    </ul>
+</div>
 
-<h2>Resources</h2>
-<ul>
-    <li>
-        <a href="https://helloclue.com/articles/cycle-a-z/testosterone-your-cycle" class="resource-link">Testosterone therapy and the menstrual cycle</a>
-    </li>
-    <li>
-        <a href="https://medium.com/hci-design-at-uw/five-things-to-think-about-when-designing-a-period-tracking-app-9a79ac7cf446" class="resource-link">Five things to think about when designing a period tracking app</a>
-    </li>
-    <li>link to resource #3</li>
-</ul>
+<div class="content-box">
+    <h2>Contact</h2>
+    <p>Need help? Contact us!</p>
+    <p>We welcome your feedback. Let us know how we can change or improve the app.</p>
 
-<h2>Contact</h2>
-<p>Need help? Contact us!</p>
-<p>We welcome your feedback. Let us know how we can change or improve the app.</p>
+    <a href="mailto:hello@cycleapp.com" target="top"><button class="btn">Contact</button></a>
+</div>
 
-<a href="mailto:hello@cycleapp.com" target="top"><button class="btn">Contact</button></a> {% endblock content %}
+
+{% endblock content %}

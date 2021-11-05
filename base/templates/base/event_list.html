@@ -1,6 +1,6 @@
 {% extends 'base/main.html' %} {% block content %}
 <p>Hi, {{ request.user }}</p>
-<p>Hi, {{ form.first_name }}</p>
+<!-- <p>Hi, {{ .first_name|title }}</p> -->
 
 <h1>My Events</h1>
 <a href="{% url 'event-create' %}">Add Event</a>

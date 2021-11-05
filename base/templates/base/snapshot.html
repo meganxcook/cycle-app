@@ -1,21 +1,26 @@
 {% extends 'base/main.html' %} {% block content %}
 
-<h1>Cycle Snapshot</h1>
+<div class="content-box">
+    <h1>Caitlin{{ .first_name|title }}, here's your cycle at a glance.</h1>
+</div>
 
-<p>The purpose of this page is to collect points of data from logged events then display those data points on charts and graphs so the user can visualize patterns throughout their cycle.</p>
-<p>Data to be displayed:</p>
-<ul>
-    <li>BBT (number)</li>
-    <li>LH (number)</li>
-    <li>Flow (light, moderate, heavy)</li>
-    <li>Cramps (none, light, moderate, heavy)</li>
-    <li>Libido (low, moderate, high)</li>
-    <li>Mood (depressed, sad, numb, irritable, angry, sensitive, happy, excited, manic)</li>
-    <li>Energy level (exhausted, low, moderate, high, energized)</li>
-</ul>
+<div class="content-box">
+    {% load static %}
+    <img src="{% static 'media/bbt-lh-chart.jpeg' %}">
+    <p>(Example image)</p>
 
-{% load static %}
-<img src="{% static 'media/bbt-chart.jpg' %}">
-<p>(Example image)</p>
+    <p>The purpose of this page is to collect points of data from logged events then display those data points on charts and graphs so the user can visualize patterns throughout their cycle.</p>
+    <p>Data to be displayed:</p>
+    <ul>
+        <li>BBT (number)</li>
+        <li>LH (number)</li>
+        <li>Cervical Fluid (3 categories)</li>
+        <li>Flow (scale, low to high)</li>
+        <li>Cramps (scale, low to high)</li>
+        <li>Libido (scale, low to high)</li>
+        <li>Mood (scale, depressed to ecstatic)</li>
+        <li>Energy level (exhausted to energized)</li>
+    </ul>
+</div>
 
 {% endblock content %}

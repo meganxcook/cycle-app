@@ -12,15 +12,15 @@ class EventForm(ModelForm):
     model = models.Event
     # datetime-local is a HTML5 input type, format to make date time show on fields
     widgets = {
-      # 'start_date': DateInput(attrs={'type': 'datetime-local'}, format='%d-%m-%Y'),
-      # 'end_date': DateInput(attrs={'type': 'datetime-local'}, format='%d-%m-%Y'),
-      'period_start_date': DateInput(attrs={'type': 'date'}, format='%m-%d-%Y'),
-      'period_end_date': DateInput(attrs={'type': 'date'}, format='%m-%d-%Y'),
+      # 'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%d-%m-%Y'),
+      # 'end_time': DateInput(attrs={'type': 'datetime-local'}, format='%d-%m-%Y'),
+      'start_date': DateInput(attrs={'type': 'date'}, format='%m-%d-%Y'),
+      'end_date': DateInput(attrs={'type': 'date'}, format='%m-%d-%Y'),
     }
     fields = '__all__'
 
   def __init__(self, *args, **kwargs):
     super(EventForm, self).__init__(*args, **kwargs)
     # input_formats parses HTML5 datetime-local input to datetime field
-    self.fields['period_start_date'].input_formats = ('%m-%d-%Y',)
-    self.fields['period_end_date'].input_formats = ('%m-%d-%Y',)
+    self.fields['start_date'].input_formats = ('%m-%d-%Y',)
+    self.fields['end_date'].input_formats = ('%m-%d-%Y',)
