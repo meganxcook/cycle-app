@@ -1,12 +1,61 @@
 {% extends 'base/main.html' %} {% block content %}
-<h1>Log Event</h1>
 
-<a href="{% url 'calendar' %}"><button class="btn">Back</button></a>
+<div class="content-box">
+    <h1>My period started or ended</h1>
+    <br>
+    <a href="{% url 'period' %}"><button class="btn">Log</button></a>
+</div>
 
-<form method="POST" action="">
-    {% csrf_token %} {{ form.as_p }}
-    <input class="btn" type="submit" value="Submit">
+<div class="content-box">
+    <h1>I'm experiencing symptoms</h1>
+    <br>
+    <a href="{% url 'symptoms' %}"><button class="btn">Log</button></a>
+</div>
 
+<div class="content-box">
+    <h1>I encountered sperm</h1>
+    <br>
+    <a href="{% url 'sperm' %}"><button class="btn">Log</button></a>
+</div>
 
-</form>
+<div class="content-box">
+    <h1>I want to log a fertility related event</h1>
+    <br>
+    <a href="{% url 'fertility' %}"><button class="btn">Log</button></a>
+</div>
+
+<div class="content-box">
+    <h1>I want to track my libido</h1>
+    <br>
+    <a href="{% url 'libido' %}"><button class="btn">Log</button></a>
+</div>
+
+<div class="content-box">
+    <h1>I want to track my moods</h1>
+    <br>
+    <a href="{% url 'mood' %}"><button class="btn">Log</button></a>
+</div>
+
+<div class="content-box">
+    <h1>I want to track my energy level</h1>
+    <br>
+    <a href="{% url 'energy' %}"><button class="btn">Log</button></a>
+</div>
+
 {% endblock content %}
+
+
+
+
+<!-- <div class="content-box">
+    <h1>Log Event</h1>
+    <br>
+    <a href="{% url 'calendar' %}"><button class="btn">Back</button></a>
+</div>
+
+<div class="content-box">
+    <form method="POST" action="">
+        {% csrf_token %} {{ form.as_p }}
+        <input class="btn" type="submit" value="Submit">
+    </form>
+</div> -->

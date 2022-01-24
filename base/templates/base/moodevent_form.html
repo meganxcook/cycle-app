@@ -1,13 +1,15 @@
 {% extends 'base/main.html' %} {% block content %}
 
 <div class="content-box">
-    <h1>Create your profile</h1>
+    <h1>Log mood</h1>
+    <br>
+    <a href="{% url 'event-create' %}"><button class="btn">Back</button></a>
 </div>
 
 <div class="content-box">
     <form method="POST" action="">
         {% csrf_token %} {{ form.as_p }}
-        <button class="btn" type="submit">Submit</button>
+        <input class="btn" type="submit" value="Submit">
     </form>
 </div>
 

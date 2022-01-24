@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Event
+from .models import PeriodEvent, SymptomEvent, SpermEvent, FertilityEvent, LibidoEvent, MoodEvent, EnergyEvent
 
 class Calendar(HTMLCalendar):
 	def __init__(self, year=None, month=None):
@@ -38,3 +39,29 @@ class Calendar(HTMLCalendar):
 		for week in self.monthdays2calendar(self.year, self.month):
 			cal += f'{self.formatweek(week, events)}\n'
 		return cal
+
+	
+	# def formatmonth(self, withyear=True):
+	# 	events = Event.objects.filter(start_date__year=self.year, start_date__month=self.month)
+	# 	# ----------
+    #     period_event = PeriodEvent.objects.all()
+    #     symptom_event = SymptomEvent.objects.all()
+    #     sperm_event = SpermEvent.objects.all()
+    #     fertility_event = FertilityEvent.objects.all()
+    #     libido_event = LibidoEvent.objects.all()
+    #     mood_event = MoodEvent.objects.all()
+    #     energy_event = EnergyEvent.objects.all()
+    #     # ----------
+	# 	all_events = [
+	# 		('period_event', period_event)
+
+	# 	]
+
+		
+
+	# 	cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
+	# 	cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
+	# 	cal += f'{self.formatweekheader()}\n'
+	# 	for week in self.monthdays2calendar(self.year, self.month):
+	# 		cal += f'{self.formatweek(week, all_events)}\n'
+	# 	return cal

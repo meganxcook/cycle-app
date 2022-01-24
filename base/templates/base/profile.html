@@ -1,7 +1,7 @@
 {% extends 'base/main.html' %} {% block content %}
 
 <div class="content-box">
-    <h1>Caitlin's{{ .first_name|title }} profile.</h1>
+    <h1>{{ request.user|title }}'s profile.</h1>
     <br>
     <a href="{% url 'profile' %}"><button class="btn">Update Profile</button></a>
 </div>
@@ -9,15 +9,15 @@
 <div class="content-box">
     <h2>Current goal</h2>
     <ul>
-        <li>goal {{ Profile.goal }}</li>
+        <li>To avoid pregnancy {{ Profile.goal }}</li>
     </ul>
 </div>
 
 <div class="content-box">
     <h2>Cycle Length</h2>
     <ul>
-        <li>Cycle averages <strong>{{ Profile.typical_cycle_length }}days</strong>.</li>
-        <li>Flow averages <strong>{{ Profile.typical_flow_length }}days</strong>.</li>
+        <li>Cycle averages <strong>{{ Profile.typical_cycle_length }}30 days</strong>.</li>
+        <li>Flow averages <strong>{{ Profile.typical_flow_length }}6 days</strong>.</li>
     </ul>
 
 </div>
@@ -25,18 +25,21 @@
 <div class="content-box">
     <h2>Recurrent symptoms</h2>
     <ul>
-        {% for symptom in typical_symptoms %}
+        <li>Headaches</li>
+        <li>Cramps</li>
+        <li>Fatigue</li>
+        <!-- {% for symptom in typical_symptoms %}
         <li>symptom 1 {{ profile.typical_symptoms }}</li>
         {% empty %}
         <li>No reported symptoms</li>
-        {% endfor %}
+        {% endfor %} -->
     </ul>
 </div>
 
 <div class="content-box">
     <h2>Current method of contraception</h2>
     <ul>
-        <li>bc method {{profile.current_bc_method}}</li>
+        <li>Barrier methods {{profile.current_bc_method}}</li>
     </ul>
 </div>
 

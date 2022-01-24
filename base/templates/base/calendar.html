@@ -1,5 +1,8 @@
 {% extends 'base/main.html' %} {% block content %}
 
+<div class="content-box">
+    <a class="btn btn-info center" href="{% url 'event-create' %}"> Log Event </a>
+</div>
 
 <div class="clearfix">
     <a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous Month </a>
@@ -7,5 +10,5 @@
 </div>
 
 {{ calendar }}
-
-<a class="btn btn-info center" href="{% url 'event-create' %}"> Log Event </a> {% endblock %}
+<br>
+<br> {% endblock %}

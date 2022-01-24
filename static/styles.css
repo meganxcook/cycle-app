@@ -290,7 +290,7 @@ header {
 }
 
 .center {
-    align-self: center;
+    justify-content: center;
 }
 
 .clearfix {

@@ -5,7 +5,7 @@
 </div> -->
 
 <div class="content-box">
-    <h1>👋 Hi, {{ request.user }}.</h1>
+    <h1>👋 Hi, {{ request.user|title }}.</h1>
 </div>
 
 <div class="content-box">
@@ -18,14 +18,15 @@
 </div>
 
 <div class="content-box">
-    <p>You are in your <strong>{{ user_phase }} phase</strong>.</p>
-    <p>You are on <strong>day {{ user_day }}</strong> of your cycle.</p>
+    <h2>Current</h2>
+    <p>You are in your <strong>{{ user_phase }}follicular phase</strong>.</p>
+    <p>You are on <strong>day 8{{ user_day }}</strong> of your cycle.</p>
 </div>
 
 <div class="content-box">
     <h2>Upcoming</h2>
-    <p>You are <strong>{{ days }} days</strong> from <strong>{{ user_phase }}ovulation</strong>.</p>
-    <p>Your <strong>{{ user_phase }}phase </strong> will begin around <strong>{{ date }}date</strong>, in <strong>{{ days }}days</strong>.</p>
+    <p>You are <strong>{{ days }} 7 days</strong> from <strong>{{ user_phase }}ovulation</strong>.</p>
+    <p>Your next <strong>{{ user_phase }}menstrual phase</strong> will begin around <strong>{{ date }}November 27</strong>.</p>
 </div>
 
 <div class="content-box">
